@@ -18,10 +18,9 @@ RUN apt-get update -y && \
     mkdir -p /usr/share/desktop-directories
 
 # Install cc-novnc dependencies
-RUN apt update && apt install -y --no-install-recommends --allow-unauthenticated \
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
     nodejs npm \
-    # Dependencies for electron
-    libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev libasound2
+    libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev liboss4-salsa-asound2
 
 # Clean up
 RUN apt autoclean -y && \
