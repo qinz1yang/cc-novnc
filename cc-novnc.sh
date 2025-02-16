@@ -4,4 +4,4 @@
 cd /cc-novnc
 
 # Start electron
-electron .
+npx electron .
