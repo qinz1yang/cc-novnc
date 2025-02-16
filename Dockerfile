@@ -20,7 +20,7 @@ RUN apt-get update -y && \
 # Install cc-novnc dependencies
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     nodejs npm \
-    libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev liboss4-salsa-asound2
+    libnss3 libgdk-pixbuf2.0-0 libgtk-3-0 libxss1 libasound2t64  # Changed to libasound2t64
 
 # Clean up
 RUN apt autoclean -y && \
@@ -34,7 +34,7 @@ COPY --from=easy-novnc-build /bin/easy-novnc /bin/easy-novnc
 COPY /app /cc-novnc
 RUN cd /cc-novnc && \
     npm install && \
-    npm install -g electron@latest
+    npm install electron --save-dev
 
 # Create directories for volumes
 RUN mkdir -p /cc-novnc/save
